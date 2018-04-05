@@ -1,0 +1,31 @@
+//Вычислить сумму модулей элементов массива, расположенных сразу после первого отрицательного элемента массива
+#include <stdio.h>
+#include <time.h>
+#include <iostream>
+#define N 10
+main() {
+    int arr[N], sum;
+    char i,neg;
+    srand(time(NULL));
+    for (i=0; i<N; i++) {
+        arr[i] = rand()%30 - 5;
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    neg = -1;
+    for (i=0; i < N; i++) {
+        if (arr[i] < 0) {
+            neg = i;
+            break;
+        }
+    }
+
+    if (neg == -1) printf("нет отрицательных\n");
+    else {
+        printf("номер I-го отриц.: %d\n", neg+1);
+        sum = 0;
+        for (i=neg+1; i<N; i++) sum += abs(arr[i]);
+        printf("сумма: %d\n", sum);
+    }
+}
